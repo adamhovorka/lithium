@@ -1,0 +1,29 @@
+@import url("http://cdn.adamhovorka.com/normalize.css");
+
+canvas, textarea, button {
+	display: block;
+	margin: 3pt auto;
+}
+
+textarea, button {
+	width: 100%;
+	resize: vertical;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+#debug {
+	white-space: pre-wrap;
+	font-size: 10pt;
+}
+
+canvas {
+	border: 1px solid #888;
+}
+
+html {
+	font-family: monospace;
+	width: 6in;
+	margin: auto;
+}

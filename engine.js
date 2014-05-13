@@ -114,8 +114,13 @@ LI = (function() {
       this.cx = this.ca.getContext("2d");
     },
 
-    set: function(a, b, v) {},
-    get: function(id) {},
+    set: function(a, b, v) {
+      this._world[a][b] = v;
+      return this;
+    },
+    get: function(id) {
+      return this._world[id];
+    },
 
     load: function(world) {
       this._world = world },

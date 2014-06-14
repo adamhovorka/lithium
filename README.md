@@ -40,7 +40,7 @@ All instance methods are chainable except `get`.
 - World manipulation: `w.set(id, [property,] [sub-property,] value)`, `w.get(id)`
 - Rendering: `w.render()`
 
-### Onjects
+### Objects
 
 There are only three kinds of objects at the moment: `camera`, `line`, and `rect`.
 

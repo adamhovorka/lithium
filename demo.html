@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lithium - 3D Engine</title>
+    <style>
+      html {
+        width: 6in;
+        margin: auto;
+        background-color: #000;
+      }
+
+      canvas {
+        border: 1px solid #888;
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 10em;
+        resize: vertical;
+      }
+    </style>
+    <script src="dot.js"></script>
+    <script src="lithium.min.js"></script>
+    <script>window.onload = function() {
+      function $(id) { return document.getElementById(id); };
+
+      var w = new Li("out");
+
+      var camera = {
+        "type":"camera",
+        "c":{"x":0,"y":0,"z":0},
+        "t":{"y":0,"p":0,"r":0},
+        "f":90,"s":1
+      };
+
+      var fps = 30, i = 0;
+      setInterval(function() {
+        i += 0.001;
+        if (i>=1) i = 0;
+        camera.t.y = i;
+        camera.c.x = Math.cos(i*6.28318)*0.5;
+        camera.c.y = -Math.sin(i*6.28318)*0.5;
+        w.set(0, camera).render();
+      }, 1000/fps);
+
+      function load() {
+        var world = JSON.parse($("in").value);
+        world.unshift(camera);
+        w.load(world).render();
+      }; load();
+
+      $("in").onkeyup = function() { load(); };
+    };</script>
+  </head>
+  <body>
+    <canvas id="out" height=500 width=500>Oops. You need a newer browser.</canvas>
+    <textarea id="in">[
+  {
+  "type":"rect",
+  "s":{"x":1,"y":1,"z":1},
+  "c":{"x":0,"y":0,"z":0},
+  "t":{"y":-0.0625,"p":-0.03125,"r":0.02},
+  "k":"#fff"
+  },{
+  "type":"rect",
+  "s":{"x":0.5,"y":0.5,"z":0.5},
+  "c":{"x":0,"y":0,"z":0},
+  "t":{"y":0.0625,"p":0.03125,"r":0},
+  "k":"#f00"
+  }
+]</textarea>
+  </body>
+</html>
